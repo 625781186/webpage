@@ -1,0 +1,27 @@
+<?php
+$myaddons = array();
+$maNum = 0;
+$myaddons[$maNum] = array('862', '/uploads/allimg/180709/qimaweb-1PFZ9254H57.png');
+$maNum = 1;
+$myaddons[$maNum] = array('863', '/uploads/allimg/180709/qimaweb-1PFZ9261aO.jpg');
+$maNum = 2;
+$myaddons[$maNum] = array('864', '/uploads/allimg/180709/qimaweb-1PFZ92645643.jpg');
+$maNum = 3;
+$myaddons[$maNum] = array('865', '/uploads/allimg/180709/qimaweb-1PFZ92G1460.jpg');
+$maNum = 4;
+$myaddons[$maNum] = array('866', '/uploads/allimg/180709/qimaweb-1PFZ92JcQ.jpg');
+$maNum = 5;
+$myaddons[$maNum] = array('867', '/uploads/allimg/180709/qimaweb-1PFZ94013G6.jpg');
+$maNum = 6;
+$myaddons[$maNum] = array('868', '/uploads/allimg/180709/qimaweb-1PFZ9402Lc.jpg');
+$maNum = 7;
+$myaddons[$maNum] = array('869', '/uploads/allimg/180709/qimaweb-1PFZ940394R.jpg');
+$maNum = 8;
+$myaddons[$maNum] = array('870', '/uploads/allimg/180709/qimaweb-1PFZ946251S.jpg');
+$maNum = 9;
+$myaddons[$maNum] = array('871', '/uploads/allimg/180709/qimaweb-1PF910131M08.png');
+$maNum = 10;
+$myaddons[$maNum] = array('872', '/uploads/allimg/180709/qimaweb-1PF910133c36.jpg');
+$maNum = 11;
+$myaddons[$maNum] = array('873', '/uploads/allimg/180709/qimaweb-1PF9101I3U4.jpg');
+$maNum = 12;

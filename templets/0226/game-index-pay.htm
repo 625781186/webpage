@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="zh-CN">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="zh-CN">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="zh-CN">
+ <!--<![endif]-->
+ <head> 
+  <meta charset="{dede:global.cfg_soft_lang/}" /> 
+  <meta name="keywords" content="{dede:field name='keywords'/}" /> 
+  <meta name="description" content="{dede:field name='description'  function='html2text(@me)'/}" />
+  <meta name="author" content="{dede:global.cfg_basehost/}" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+  <meta name="renderer" content="webkit" /> 
+  <meta http-equiv="x-dns-prefetch-control" content="on" />
+  <link rel='dns-prefetch' href='{dede:global.cfg_basehost/}{dede:type}[field:typeurl/]{/dede:type}'>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
+  <title>{dede:field.typename/}_{dede:global.cfg_webname/}</title>
+  <!--[if lt IE 9]>
+    <script src="{dede:global.cfg_cmsurl/}/skin/1.0/js/html5.js" type="text/javascript"></script>
+  <![endif]-->
+  <link rel="shortcut icon" href="{dede:global.cfg_cmsurl/}/favicon.ico" />
+  <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/skin/1.0/css/list_scre.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/skin/1.0/css/font-awesome.min.css?ver=1.0" type="text/css" media="all" />
+  <link rel="stylesheet" href="{dede:global.cfg_cmsurl/}/skin/1.0/css/style.css?ver=1.0" type="text/css" media="all" />
+  <script type="text/javascript" src="{dede:global.cfg_cmsurl/}/skin/1.0/js/jquery.min.js?ver=1.0"></script> 
+  <script type="text/javascript" src="{dede:global.cfg_cmsurl/}/skin/1.0/js/jquery-migrate.min.js?ver=1.0"></script> 
+  <script language="javascript" type="text/javascript" src="{dede:global.cfg_cmsurl/}/i/ajax_main.js"></script>
+  <style type="text/css">
+  .sub-billboard{ margin-top:-10px;}
+  #container{padding-top:0px;}
+  #TagBox{top:0px;left:0px;}
+  </style>
+ </head> 
+ <body> 
+  {dede:include filename="game-head-2.htm"/} 
+  <div id="container" class="container">
+   <div class="content page"> 
+    <div id="primary" class="primary" role="main"> 
+     <div class="area"> 
+      <div class="page-wrapper"> 
+       <article id="post-17"> 
+        <header class="single-header"> 
+         <div class="single-meta"> 
+          <h1 class="title">充值中心</h1> 
+         </div> 
+        </header> 
+        <div class="single-content"> 
+         
+
+
+<div class="right" style="margin-top: 30px;float: none;margin: 0 auto;">
+                    <div class="news-wrap">
+                        <div class="cs_select_tit">
+                            <ul>
+                                <li class="hover"><a href="/index.php/home/goods/goods">游戏充值</a></li>
+                            </ul>
+                        </div>
+                        <form action="" method="post" name="netbank_pay" onsubmit="return net_check();">
+                            <!-- 隐性参数  开始   游戏ID 区服ID  支付渠道标识 -->
+                            <input type="hidden" name="pre_product_id" id="pre_product_id" value="">
+                            <input type="hidden" name="pre_server_id" id="pre_server_id" value="">
+                            <input type="hidden" name="pre_passage" id="pre_passage" value="netbank">
+                            <input type="hidden" name="server_IDs" id="server_IDs" value="">
+                            <input type="hidden" name="server_IDs" id="server_names" value="">
+                            <!-- 隐性参数  结束  -->
+
+                            <div class="pay">
+
+
+                                <ol class="pay-mian">
+
+                                    <li class="pay-02">
+                                        <h2>请填写并确认账号信息</h2>
+                                        <p>充值账号：
+                                            <input type="text" class="pay-text" name="pre_payto" id="pre_payto" value="" onblur="checktype(this.value)">
+                                            <label><strong>* </strong>请填写您充值的目标帐号</label>
+                                        </p>
+                                        <p>确认账号：
+                                            <input type="text" class="pay-text" name="pre_paytoconfirm" id="pre_paytoconfirm" value="">
+                                            <label><strong>* </strong> 请确认您充值的帐号</label>
+                                        </p>
+                                        <p style="display:none" id="payrole">充值角色：
+                                            <input type="text" class="pay-text" name="pre_payrole" id="pre_payrole" value="">
+                                            <label> 若您在选择的游戏区拥有多个角色，请填写充值角色名称</label>
+                                        </p>
+                                        <p class="nopad" id="nopad" style="display:none;">
+                                            <!--通过账号判断是“个性账号/邮箱”还是“手机账号”，用户也可以自己选择类型，根据选定的类型，下面出不同的提示-->
+                                            <input type="radio" name="account" id="account01" value="0" onclick="choosetype(this.value);">
+                                            <label for="account01">个性账号/邮箱</label>
+                                            <input type="radio" name="account" id="account02" value="1" onclick="choosetype(this.value);">
+
+                                            <label for="account02">手机账号</label>
+                                        </p>
+                                        <p class="pay-02-tip nopad">
+                                            <!--提示内容是动态的-->
+                                            <span id="info"></span>
+                                        </p>
+                                    </li>
+                                    <li class="pay-03" style="height: 60px;">
+                                        <dl id="gamepay2">
+                                            <dd id="gamepay-0">
+                                                <h2>请选择充值金额</h2>
+                                                <p id="selectMoney">选择充值套餐：
+                                                    <select name="pre_money" id="pre_money" class="pay-select">
+                                                        <option selected="">5</option>
+                                                        <option>10</option>
+                                                        <option>15</option>
+                                                        <option>20</option>
+                                                        <option>30</option>
+                                                        <option>40</option>
+                                                        <option>50</option>
+                                                        <option>100</option>
+                                                        <option>200</option>
+                                                        <option>300</option>
+                                                        <option>400</option>
+                                                        <option>500</option>
+                                                        <option>1000</option>
+                                                    </select>1元 = 10元宝</p>
+                                                <p id="pre_notice"></p>
+                                                <div class="gifts"><p id="pre_credit"><br><br></p></div>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                </ol>
+                            </div>
+                        </form>
+                    </div>
+                    <script>
+                    $(function(){
+                        $("#nextBtn").click(function(e){
+                            e.preventDefault()
+                            var $pre_payto =  $("#pre_payto").val()
+                            var $pre_paytoconfirm = $("#pre_paytoconfirm").val()
+                            var $pre_money = $("#pre_money").val()
+                            if($pre_payto == $pre_paytoconfirm && $pre_payto != '' && $pre_money != ''){
+                                window.location.href = '/index.php/home/index/money2'
+                            }
+                        })
+                    })
+
+                </script>
+                </div><ul class="bank-list" style="margin: 0 auto;">
+
+                        <li><input type="radio" name="selectbank" id="pay-ICBC" value="yeepay_ICBC"><label for="pay-ICBC"><img src="/Public/home/picture/icbc.jpg" alt="中国工商银行"><span></span></label></li>
+
+
+                        <li><input type="radio" name="selectbank" id="pay-CBC" value="yeepay_CBC"><label for="pay-CBC"><img src="/Public/home/picture/cbc.jpg" alt="中国建设银行"><span></span></label></li>
+
+
+                        <li><input type="radio" name="selectbank" id="pay-CMB" value="yeepay_CMB"><label for="pay-CMB"><img src="/Public/home/picture/cmb.jpg" alt="招商银行"><span></span></label></li>
+
+
+                        <li><input type="radio" name="selectbank" id="pay-BCM" value="yeepay_BCM"><label for="pay-BCM"><img src="/Public/home/picture/bcm.jpg" alt="交通银行"><span></span></label></li>
+
+
+                        <li><input type="radio" name="selectbank" id="pay-ABC" value="yeepay_ABC"><label for="pay-ABC"><img src="/Public/home/picture/abc.jpg" alt="中国农业银行"><span></span></label></li>
+
+
+                        <li><input type="radio" name="selectbank" id="pay-GDB" value="yeepay_GDB"><label for="pay-GDB"><img src="/Public/home/picture/gdb.jpg" alt="广发银行"><span></span></label></li>
+
+
+                        <li><input type="radio" name="selectbank" id="pay-CIB" value="yeepay_CIB"><label for="pay-CIB"><img src="/Public/home/picture/cib.jpg" alt="兴业银行"><span></span></label></li>
+
+
+                        <li><input type="radio" name="selectbank" id="pay-CEB" value="yeepay_CEB"><label for="pay-CEB"><img src="/Public/home/picture/ceb.jpg" alt="中国光大银行"><span></span></label></li>
+
+
+                        <li><input type="radio" name="selectbank" id="pay-CITICBANK" value="yeepay_CITICBANK"><label for="pay-CITICBANK"><img src="/Public/home/picture/citicbank.jpg" alt="中信银行"><span></span></label></li>
+
+
+                        <li><input type="radio" name="selectbank" id="pay-SPDB" value="yeepay_SPDB"><label for="pay-SPDB"><img src="/Public/home/picture/spdb.jpg" alt="浦发银行"><span></span></label></li>
+
+
+                        <li><input type="radio" name="selectbank" id="pay-BOC" value="yeepay_BOC"><label for="pay-BOC"><img src="/Public/home/picture/boc.jpg" alt="中国银行"><span></span></label></li>
+
+
+                        <li><input type="radio" name="selectbank" id="pay-CMBC" value="yeepay_CMBC"><label for="pay-CMBC"><img src="/Public/home/picture/cmbc.jpg" alt="中国民生银行"><span></span></label></li>
+
+
+                        <li><input type="radio" name="selectbank" id="pay-BEIJING" value="alibank_BEIJING"><label for="pay-BEIJING"><img src="/Public/home/picture/beijing.jpg" alt="北京银行"><span></span></label></li>
+
+
+                        <li><input type="radio" name="selectbank" id="pay-SHANGHAI" value="yeepay_SHANGHAI"><label for="pay-SHANGHAI"><img src="/Public/home/picture/shanghai.jpg" alt="上海银行"><span></span></label></li>
+
+
+                        <li><input type="radio" name="selectbank" id="pay-PINGAN" value="yeepay_PINGAN"><label for="pay-PINGAN"><img src="/Public/home/picture/pingan.jpg" alt="平安银行"><span></span></label></li>
+
+                    </ul><div class="bank-btm" style="margin: 0 auto;"><input type="button" class="bank-btn" value="确认付款方式" onclick="alert('付款');"></div>
+
+
+
+
+
+<style>
+
+                    .login, .services{
+                        width: 286px;
+                    }
+
+                    .p_left {
+                        float: left;
+                        width: 100px;
+                    }
+                    .p_right {
+                        float: right;
+                        width: 700px;
+                    }
+
+                    .bank-btm input {
+                        background-color: orange;
+                    } /* 支付中心 */
+ .com_jw_news a:visited{color:#fff}
+ .pay-nav{width:236px;padding-bottom:10px;margin-top:10px;}
+ .pay-bar{width:236px;overflow:hidden;zoom:1;}
+ .pay-cover{/*width:55px;height:54px;background:url(../images/bg.png) no-repeat -432px -446px;*/width:48px;height:48px;margin-left:25px;margin-top:20px;padding:3px;float:left;_display:inline;border:1px solid #fdcf97;border-radius:6px}
+ .pay-cover img{width:48px;height:48px}
+ .pay-user-level{color:#ec6700}
+ .pay-user-money{color:#666}
+ .pay-user-money span{color:#fa9b0a}
+ .pay-user-info{float:left;width:130px;margin-top:18px;padding-left:8px;line-height:20px;}
+ .pay-user-info li{width:130px;height:20px;overflow:hidden}
+ .pay-title{/*display:block;*/font-size:14px;color:#ec6700;font-weight:bold;}
+ .pay-else{margin:16px 0 0 48px;line-height:22px}
+ .pay-else a{color:#ec6700}
+ #pay-nav{margin-top:10px;}
+#pay-nav a{display:block;width:186px;height:45px;background:url(../images/bg.png) no-repeat -550px 0px;color:#666;padding-left:50px;line-height:45px;font-weight:bold;font-size:14px;}
+#pay-nav a:hover,#pay-nav .hover,#pay-nav .on{color:#ec6700;text-decoration:none}
+#pay-nav dd{position:relative;;z-index:100}
+#pay-nav ul{position:absolute;right:-176px;top:0px;background:#fcf6e5;border:#fdca8d solid 1px;padding:5px;display:none;width:180px}
+#pay-nav li{background:#fff;height:30px;}
+#pay-nav li a{width:150px;height:30px;line-height:30px;background:none;padding-left:20px;}
+#pay-nav li a:hover,#pay-nav li .hover{background:url(../images/bg.png) no-repeat -550px 28px;}
+.pay-services h2{height:30px;overflow:hidden;}
+.pay-services h2 span{display: -moz-inline-stack;display: inline-block;zoom: 1;*display: inline;height:30px;line-height:30px;font-family: "微软雅黑","宋体";font-size:15px;padding-left:8px;color:#555555;}
+.pay-services ul{width:230px;padding-left:4px;margin-top:10px;overflow:hidden;background-color:#FCF6E6;border-left:1px solid #FEEEBA;border-right:1px solid #FEEEBA;}
+.pay-services  li{width:226px;height:58px;float:left;overflow:hidden;}
+.pay-services  li a{width:130px;padding-left:96px;height:58px;display:block;overflow:hidden;font-size:14px;}
+.pay-services  li a:hover{background: url(../images/list_bg.jpg) no-repeat -245px 0px;text-decoration: none;color:#FFFFFF;}
+.pay-services  li a span{display: -moz-inline-stack;display: inline-block;zoom: 1;*display: inline;	height:18px;line-height:18px;padding-top:9px;font-size:14px;color:#EF6800;font-weight:bold;background-image: url(../images/ico02.gif);background-repeat: no-repeat;background-position: right 14px;padding-right:8px;cursor:pointer;}
+.pay-services  li a:hover span{color:#FFFFFF;background-image: url(../images/ico03.gif)}
+.pay-services  li a p{font-size:12px;color:#777777;padding-top:8px;}
+.pay-services  li a:hover p{color:#FFE7CD}
+.pay-services  li.nav01 a{background: url(../images/list_bg.jpg) no-repeat 0px -583px;}
+.pay-services  li.nav01 a:hover{background: url(../images/list_bg.jpg) no-repeat -245px -583px;}
+.pay-services  li.nav02 a{background: url(../images/list_bg.jpg) no-repeat 0px -643px;}
+.pay-services  li.nav02 a:hover{background: url(../images/list_bg.jpg) no-repeat -245px -643px;}
+.service_call{width:236px;height:46px;padding-top:10px;overflow:hidden;background: url(../images/common.jpg) no-repeat -313px -70px;margin-top:13px;}
+.service_call h2{height:13px;padding:4px 0;line-height:13px;font-size:12px;text-indent:12px;font-weight:normal;}
+.service_call p{text-indent:12px;font-size:22px;color:#E2722A;}
+#game,#server{border:0;background:none;color:#555;height:20px;line-height:20px;}
+   
+    /* 支付中心 -右侧*/
+.pay-history{margin-top:10px;width:700px;}
+.pay-history input{margin-left:5px;vertical-align:middle;}
+.pay-history label{font-weight:bold;margin-left:10px;margin-right:10px;cursor:pointer}
+.pay-history li{overflow:hidden;zoom:1;height:35px;line-height:35px;border-bottom:dashed 1px #999;margin-bottom:5px}
+.pay-history p{float:left;}
+.pay-history .pay-btn1{float:right;display:block;width:70px;height:30px;line-height:30px;background:url(../images/bg.png) no-repeat;padding-left:15px;background-position:-452px -0px;display:none;}
+.pay-history .pay-btn1:hover{background-position:-452px -36px;text-decoration:none;}
+.pay-tip{padding-left:20px;margin-top:20px;background:url(../images/mark_01.jpg) no-repeat 2px 2px;line-height:20px;font-size:14px;}
+.pay-tip .highlight{color:#ec6700;font-weight:bold}
+.pay-mian{margin-top:10px;line-height:25px;}
+.pay-mian li p {padding: 3px 0 3px 0;}.pay-mian li .nopad{padding:0}
+.pay-mian h2{font-size:14px;color:#ec6700;background:url(../images/bg.png) no-repeat -563px 26px;}
+.pay-mian li{padding-left:80px;border-bottom:dashed 1px #999;padding-bottom:10px;padding-top:10px;overflow:hidden;zoom:1}
+.pay-01{background-position:30px 0}
+.pay-02{background-position:30px -123px}
+.pay-03{background-position:30px -246px;}
+.pay-mian a,.pay-mian a:visited{color:#ec6700;}
+.pay-01 input,.pay-03 input,.pay-03 input{vertical-align:middle;margin-right:5px;}
+.pay-text{border:#ccc solid 1px;height:18px;line-height:18px;width:135px;}
+.pay-mian label{margin-right:12px;}
+.pay-mian label strong{color:#f00;}
+.pay-btm{text-align:center;}
+.pay-btm input{width:120px;height:32px;line-height:32px;background:url(../images/bg.png) no-repeat -361px -128px;border:0;font-size:14px;font-weight:bold;color:#fff;cursor:pointer;margin-top:20px;}
+.gifts p{float:left}
+.pay-03-float{float:left}
+.pay-03-label{display:block;padding:0 0 0 84px}
+#gamepay dd{display:none;}
+                </style>
+
+
+
+
+        </div> 
+       </article> 
+      </div> 
+     </div> 
+     <div class="aside"> 
+      <div class="menus"> 
+       <ul> 
+        {dede:channel type='son' currentstyle="<li class='current_page_item'><a href='~typelink~' ~rel~>~typename~</a></li>"}
+        <li><a href='[field:typeurl/]' [field:rel/]>[field:typename/]</a></li>
+        {/dede:channel}
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div>
+  {dede:include filename="footer.htm"/}
+ </body>
+</html>
